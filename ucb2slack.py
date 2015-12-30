@@ -118,8 +118,8 @@ def post_to_slack(project_name, data, config):
 
 def get_post_text(project_name, data, config):
 	text_list = []
-	build_result = 'Success' if data['buildStatus'] == 'success' else 'Fail'
-	text_list.append('[%s] Unity Cloud Build build%s : %s #%d' % (project_name, build_result, data['platform'].encode('utf_8'), data['build']))
+	build_result = 'Succeeded' if data['buildStatus'] == 'success' else 'Failed'
+	text_list.append('[%s] build %s : %s #%d' % (project_name, build_result, data['platform'].encode('utf_8'), data['build']))
 	text_list.append('[ChangeLogs]')
 	for change in data['changeset']:
 		text_list.append('\t' + change['message'].encode('utf_8'))
